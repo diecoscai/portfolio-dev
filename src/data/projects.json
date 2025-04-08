@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Project One",
+    "image": "/projects_img/project-one.png",
+    "description": "This is a description for Project One. It showcases skills in X, Y, and Z.",
+    "githubLink": "https://github.com/yourusername/project-one",
+    "vercelLink": "https://project-one-yourusername.vercel.app/",
+    "technologies": ["HTML", "CSS", "JavaScript"]
+  },
+  {
+    "name": "Project Two",
+    "image": "/projects_img/project-two.jpg",
+    "description": "Description for Project Two. Built using React and Tailwind CSS.",
+    "githubLink": "https://github.com/yourusername/project-two",
+    "vercelLink": "https://project-two-yourusername.vercel.app/",
+    "technologies": ["React", "Tailwind CSS", "Vite"]
+  },
+  {
+    "name": "Project Three",
+    "image": "/projects_img/project-three.gif",
+    "description": "Project Three focuses on backend development with Node.js and Express.",
+    "githubLink": "https://github.com/yourusername/project-three",
+    "vercelLink": "https://project-three-yourusername.vercel.app/",
+    "technologies": ["Node.js", "Express", "MongoDB"]
+  },
+  {
+    "name": "Project Four",
+    "image": "/projects_img/project-four.webp",
+    "description": "A full-stack application using Next.js and Prisma.",
+    "githubLink": "https://github.com/yourusername/project-four",
+    "vercelLink": "https://project-four-yourusername.vercel.app/",
+    "technologies": ["Next.js", "Prisma", "PostgreSQL", "TypeScript"]
+  },
+  {
+    "name": "Project Five",
+    "image": "/projects_img/project-five.svg",
+    "description": "An Astro site demonstrating static site generation capabilities.",
+    "githubLink": "https://github.com/yourusername/project-five",
+    "vercelLink": "https://project-five-yourusername.vercel.app/",
+    "technologies": ["Astro", "Tailwind CSS", "Markdown"]
+  }
+] 

@@ -1,0 +1,45 @@
+---
+import Badge from "./Badge.astro";
+import LinkedInIcon from "../icons/LinkedIn.astro";
+import GitHubIcon from "../icons/GitHub.astro";
+---
+
+<section class="grid w-full mx-auto lg:w-[960px] md:w-[480px] py-20">
+  <h1
+    class="text-[#283618] dark:text-[#edf2f4] text-5xl font-bold gap-x-4 pb-10 grid lg:grid-cols-3 md:grid-cols-1"
+  >
+    <span class="lg:col-span-2">Hey, I'm Diego Costa</span>
+    <a
+      href="https://linkedin.com/in/diego-costa-caivano"
+      target="_blank"
+      rel="noopener"
+      class="lg:col-span-1 items-center cursor-pointer"
+    >
+      <Badge> Available for hire</Badge>
+    </a>
+  </h1>
+  <h2 class="text-3xl opacity-80">
+    <span class="text-[#252422] dark:text-[#EB5E28]"> Web Developer</span> with <span
+      >+2 years of experience.</span
+    >
+  </h2>
+  <p class="">
+    <span class="text-xl text-[#403D39] dark:text-[#FFFCF2]"
+      >Based on Montevideo, Uruguay</span
+    >. I love creating user-friendly experiences that work well and solve real
+    problems.
+  </p>
+
+  <ul class="flex flex-row gap-5 justify-center p-10">
+    <a
+      href="https://linkedin.com/in/diego-costa-caivano"
+      class="w-[140px] justify-center border-2 rounded-full flex flex-row gap-x-2 opacity-80 px-4 py-1 hover:bg-amber-50 hover:text-[#020618] hover:fill-[#020618]"
+      ><LinkedInIcon />LinkedIn</a
+    >
+    <a
+      href="https://github.com/diecoscai"
+      class="w-[140px] justify-center border-2 rounded-full flex flex-row gap-x-2 opacity-80 px-4 py-1 hover:bg-amber-50 hover:text-[#020618] hover:fill-[#020618]"
+      ><GitHubIcon />GitHub</a
+    >
+  </ul>
+</section>
