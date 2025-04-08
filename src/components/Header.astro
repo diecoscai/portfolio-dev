@@ -1,0 +1,93 @@
+---
+import Hamburger from "../icons/Hamburger.astro";
+
+
+const links = [
+    {name: 'Home', ref:'/', icon:'fa-solid fa-house'},
+    {name: 'Projects', ref:'#projects', icon:'fa-solid fa-code'},
+    {name: 'About', ref:'#about', icon:'fa-solid fa-shield-cat'},
+    {name: 'Contact', ref:'#contact', icon:'fa-solid fa-envelope'},
+    
+];
+
+---
+
+<header class="flex md:justify-center items-center py-5 w-full mx-auto px-4 md:px-0">
+    <nav class="w-full md:w-auto">
+        <button id="mobile-menu-button" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-[#252422] rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-[#CCC5B9] dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <Hamburger/>
+        </button>
+        <div class="hidden md:flex flex-row gap-x-10">
+            {
+                links.map(link => <a class="group transition duration-300 text-[#252422] dark:text-[#CCC5B9]" href={link.ref}><i class={link.icon}></i> {link.name}<span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-[#252422] dark:bg-[#CCC5B9]"></span></a>)
+            }
+        </div>
+        <div id="mobile-menu" class="fixed top-0 right-0 left-0 z-40 flex flex-col bg-[#252422] dark:bg-[#FFFCF2] transform -translate-x-full transition-transform duration-500 ease-in-out md:hidden">
+            <button id="close-menu-button" type="button" class="self-end p-4 text-[#CCC5B9] dark:text-[#252422]">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            {
+                links.map(link => <a class="block p-5 group transition duration-300 text-[#CCC5B9] dark:text-[#252422] text-lg font-medium border-b border-gray-700 dark:border-gray-300" href={link.ref}><i class={link.icon}></i> {link.name}</a>)
+            }
+        </div>
+    </nav>
+
+    <!-- <img class="rounded-full w-12 h-12" src="https://i.pinimg.com/564x/17/9d/48/179d48acd96e5c3ec229976791fb693e.jpg" alt="my-logo"> -->
+</header>
+
+<script>
+  const menuButton = document.getElementById('mobile-menu-button');
+  const closeButton = document.getElementById('close-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  function toggleMenu() {
+    if (!menuButton || !mobileMenu) return; 
+    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', String(!isExpanded));
+    mobileMenu.classList.toggle('-translate-x-full');
+    mobileMenu.classList.toggle('translate-x-0');
+    if (!isExpanded) {
+        document.body.classList.add('overflow-hidden', 'md:overflow-auto');
+    } else {
+        document.body.classList.remove('overflow-hidden', 'md:overflow-auto');
+    }
+  }
+
+  if (menuButton && mobileMenu && closeButton) {
+    menuButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggleMenu();
+    });
+    closeButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggleMenu();
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            toggleMenu();
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        const isMenuOpen = mobileMenu.classList.contains('translate-x-0');
+        const isClickInsideMenu = mobileMenu.contains(event.target as Node);
+        const isClickOnButton = menuButton.contains(event.target as Node);
+
+        if (isMenuOpen && !isClickInsideMenu && !isClickOnButton) {
+            toggleMenu();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && mobileMenu.classList.contains('translate-x-0')) {
+            toggleMenu();
+        }
+    });
+
+  } else {
+      console.error("Mobile menu button, close button, or mobile menu element not found!");
+  }
+</script>
+

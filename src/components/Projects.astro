@@ -1,0 +1,112 @@
+---
+import Card from "./Card.astro";
+import projects from "../data/projects.json";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
+---
+
+<section id="projects" class="grid w-full mx-auto lg:w-[960px] md:w-[480px]">
+
+  <h1 class="text-3xl font-bold text-center mb-8">PROJECTS</h1>
+
+  <div class="swiper relative">
+    <div class="swiper-wrapper">
+      {projects.map(project => (
+        <div class="swiper-slide">
+          <Card project={project}/>
+        </div>
+      ))}
+    </div>
+
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <div class="swiper-scrollbar"></div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination, Scrollbar } from 'swiper/modules';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const swiper = new Swiper('.swiper', {
+      modules: [Navigation, Pagination, Scrollbar],
+
+      loop: true,
+
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        hide: true,
+      },
+
+      slidesPerView: 1,
+      spaceBetween: 10,
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  .swiper {
+    width: 100%;
+    max-width: 960px;
+    height: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
+  .swiper-slide > :global(*) {
+    height: 100%;
+    width: 100%;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #ffaa00;
+  }
+
+  .swiper-button-prev {
+    left: 0px;
+  }
+
+  .swiper-button-next {
+    right: 0px;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #252422;
+  }
+</style>
